@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const {getCountries, getCountry, createCountry, updateCountry, deleteCountry} =require('../controllers/contriesControllers')
+const {getCountries, getCountry, createCountry, updateCountry, deleteCountry} =require('../controllers/countriesControllers')
 
 router.route('/').get(getCountries).post(createCountry)
 router.route('/:id').get(getCountry).patch(updateCountry).delete(deleteCountry)

@@ -1,26 +1,28 @@
 const express = require('express')
 require('dotenv').config()
 const path = require('path')
-const errorHandler = require('./middleware/errorHanldler')
-const { connect } = require('http2')
+const errorHandler = require('./middleware/errorHandler')
+ 
 const connectDb = require('./config/dbConnection')
 
-app = express()
+const app = express()
 // built-in middellware forform data
 // app.use(express.urlencoded({ extended: false }));
 
 // built-in middellware for json
 app.use(express.json())
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3000
 
 connectDb()
 
 app.use('/api/countries', require('./routes/countriesRouters'))
 app.use(errorHandler)
 
-app.listen(PORT, (req,res)=>[
+
+app.get('/',(req,res)=>{
+    res.render('index.ejs')
+})
+app.listen(PORT, ()=>{
     console.log(`Connected on port ${PORT}`)
-])
-
-
+})
