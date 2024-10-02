@@ -11,7 +11,8 @@ const app = express()
 
 // built-in middellware for json
 app.use(express.json())
-
+// Server static files 
+app.use(express.static(path.join(__dirname,'/public')))
 const PORT = process.env.PORT || 3000
 
 connectDb()
