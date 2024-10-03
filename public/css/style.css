@@ -53,6 +53,7 @@ li a {
     justify-content: center; /* Centre verticalement */
     height: 50vh; /* Prend toute la hauteur de la fenêtre */
     text-align: center; /* Centre le texte */
+    
 }
 
 .container .title {

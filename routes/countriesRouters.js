@@ -1,9 +1,12 @@
 const express = require("express")
 const router = express.Router()
-const {getCountries, getCountry, createCountry, updateCountry, deleteCountry} =require('../controllers/countriesControllers')
+const {getCountries, getCountry, createCountry, updateCountry, deleteCountry, getAllCountries } =require('../controllers/countriesControllers')
 
 router.route('/').get(getCountries).post(createCountry)
 router.route('/:id').get(getCountry).patch(updateCountry).delete(deleteCountry)
+
+router.route('/all').get(getAllCountries); // Une nouvelle route pour récupérer tous les pays
+
 
 module.exports = router
 

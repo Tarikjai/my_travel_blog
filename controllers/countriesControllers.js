@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler")
 
 const Country = require('../models/countryModel')
+const AllCountriesModel = require('../models/AllCountriesModel'); // Ajout de l'importation
 
 //#desc Get All Countries 
 //@route GET /api/countries
@@ -124,5 +125,17 @@ const deleteCountry = asyncHandler(async(req,res)=>{
     res.status(200).json({message : `The country of ${country.name} has been deleted.`})
 })
 
-module.exports = {getCountries, getCountry, createCountry, updateCountry, deleteCountry}
+
+
+//#desc Get All Countries from AllCountriesModel
+//@route GET /api/countries/all
+//@acces public
+const getAllCountries = asyncHandler(async (req, res) => {
+    const countries = await AllCountriesModel.find(); // Assurez-vous que vous utilisez le bon modèle
+    console.log(countries)
+    res.status(200).json(countries);
+});
+
+
+module.exports = {getCountries, getCountry, createCountry, updateCountry, deleteCountry, getAllCountries}
 

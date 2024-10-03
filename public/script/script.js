@@ -1,3 +1,24 @@
+ // Récupérer la liste des pays depuis l'API
+ async function fetchCountries() {
+    try {
+        const response = await fetch('/api/countriesList/all'); // Mettez à jour l'URL
+        const countries = await response.json();
+        const selectElement = document.getElementById('country-select');
+
+        countries.forEach(country => {
+            const option = document.createElement('option');
+            option.value = country.name; // Assurez-vous que "name" est la bonne clé
+            option.textContent = country.name; // Assurez-vous que "name" est la bonne clé
+            selectElement.appendChild(option);
+        });
+    } catch (error) {
+        console.error('Error fetching countries:', error);
+    }
+}
+
+// Appeler la fonction pour charger les pays
+fetchCountries();
+
 document.addEventListener('DOMContentLoaded', function () {
     const countryInput = document.querySelector('input[name="name"]');
 
@@ -21,3 +42,4 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+

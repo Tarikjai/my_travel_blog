@@ -6,6 +6,9 @@ const errorHandler = require('./middleware/errorHandler')
  
 const connectDb = require('./config/dbConnection')
 
+const AllCountriesModel = require('./models/AllCountriesModel'); // Ajout de l'importation
+
+
 const app = express()
 
 app.use(cors());
@@ -30,14 +33,30 @@ app.use('/api/countries', require('./routes/countriesRouters'))
 app.use(errorHandler)
 
 
+//Pages
 app.get('/',(req,res)=>{
     res.render('index.ejs')
 })
 
- 
 app.get('/confirmation', (req, res) => {
     res.render('confirmation.ejs');
 });
+app.get('/form', (req, res) => {
+    res.render('form.ejs');
+});
+
+
+//fetch allcountries
+
+app.get('/api/countriesList/all', async (req, res) => {
+    try {
+      const countries = await AllCountriesModel.find();
+      res.json(countries);
+    } catch (error) {
+        console.log(countries)
+      res.status(500).json({ error: 'Error fetching countries' });
+    }
+  });
 
 app.listen(PORT, ()=>{
     console.log(`Connected on port ${PORT}`)
