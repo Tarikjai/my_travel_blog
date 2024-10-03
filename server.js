@@ -7,7 +7,7 @@ const errorHandler = require('./middleware/errorHandler')
 const connectDb = require('./config/dbConnection')
 
 const AllCountriesModel = require('./models/AllCountriesModel'); // Ajout de l'importation
-
+const Country= require('./models/countryModel')
 
 const app = express()
 
@@ -34,8 +34,10 @@ app.use(errorHandler)
 
 
 //Pages
-app.get('/',(req,res)=>{
-    res.render('index.ejs')
+app.get('/', async(req,res)=>{
+  //renvoie des informations sur le pays dans ma cards en index
+  const countries = await Country.find()
+  res.render('index.ejs', { countries })
 })
 
 app.get('/confirmation', (req, res) => {
@@ -46,7 +48,7 @@ app.get('/form', (req, res) => {
 });
 
 
-//fetch allcountries
+//fetch allcountries depuis mongodd pour les afficher dans la liste déroulante 
 
 app.get('/api/countriesList/all', async (req, res) => {
     try {
@@ -61,3 +63,6 @@ app.get('/api/countriesList/all', async (req, res) => {
 app.listen(PORT, ()=>{
     console.log(`Connected on port ${PORT}`)
 })
+
+// rr
+ 

@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Travel blog</title>
 </head>
 <body> 
     
@@ -19,51 +20,36 @@
     </div>
     
 </nav>
-<section class="section-container">
+<section >
      
-    <div class="container">
-        <!-- Title section -->
-        <div class="title">Enter the information</div>
-        <div class="content">
-          <!-- Registration form -->
-          <form action="/api/countries" method="post">
-            <div class="user-details">
-              <!-- Input for Full Name -->
-              <!-- <div class="input-box">
-                <span class="details">Country Name</span>
-                <input type="text" placeholder="Enter the country name" required name="name">
-              </div> -->
-              <div class="input-box">
-                <span class="details">Country Name</span>
-                <select id="country-select" required name="name">
-                    <option value="" disabled selected>Select a country</option>
-                </select>
-            </div>
-              <!-- Input for Username -->
-              <div class="input-box">
-                <span class="details">Capital</span>
-                <input type="text" placeholder="Enter the Capital name" required name="capital">
-              </div>
-              <!-- Input for Email -->
-              <div class="input-box">
-                <span class="details">Description</span>
-                 
-                <textarea placeholder="Enter your description" required rows="4" style="width: 100%; height: 100px;" name="description"></textarea>
-              </div>
-        
-            </div>
-      
-            <!-- Submit button -->
-            <div class="button">
-              <input type="submit" value="Submit">
-            </div>
-          </form>
-        </div>
-      </div>
+  <div class="card-container">
+    <h1 class="my-4">Liste des pays</h1>
     
+    <div class="row">
+        <% countries.forEach(function(country) { %>
+            <div class="col-md-4 mb-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="../img/Paris.png" class="card-img-top" alt="<%= country.name %>">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= country.name %></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Capitale : <%= country.capital %></h6>
+                        <p class="card-text"><%= country.description %></p>
+                        <div class="d-flex justify-content-between">
+                            <a href="#" class="btn btn-primary">En savoir plus</a>
+                            <a href="#" class="btn btn-secondary">Edit</a> <!-- Bouton Edit ajouté ici -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
     
 </section> 
+
 <script src="/script/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>

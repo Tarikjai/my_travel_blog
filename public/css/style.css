@@ -132,3 +132,53 @@ form .button input {
 form .button input:hover {
     background: linear-gradient(-135deg, #71b7e6, #9b59b6);
 }
+
+
+.card-container {
+    margin:30px auto;
+    max-width: 1000px;
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Assure que la carte remplit toute la hauteur de la colonne */
+  }
+  
+  .card-body {
+    flex: 1; /* Permet à la card-body de grandir pour remplir l'espace disponible */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Espace entre le texte et le bouton */
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  .card-subtitle {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .card-text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; /* Limite le texte à 3 lignes */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-grow: 1; /* Permet à la description de remplir l'espace restant */
+  }
+  
+  .btn {
+    margin-top: auto; /* Pousse le bouton vers le bas */
+  }
+  
