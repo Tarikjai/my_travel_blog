@@ -31,9 +31,10 @@ const createCountry = asyncHandler(async(req,res)=>{
     console.log(`The request body is : ${JSON.stringify(req.body)}`)
     const { name, capital, description  } = req.body
 
+   /* name = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();*/
     // Vérifie si le pays existe deja 
-    const country = await Country.findOne({name})
-    if (country) {
+    const existingCountry  = await Country.findOne({name})
+    if (existingCountry ) {
         return res.status(404).json({
             message: `${name} existe déja.`
         });
@@ -45,12 +46,19 @@ const createCountry = asyncHandler(async(req,res)=>{
         throw new Error('All fields are mandatory ! ');
     }
     try {
-        const country = await Country.create({
+        const newCountry  = await Country.create({
             name,
             capital,
             description
         });
-        res.status(201).json(country);
+           // Vérifie si la requête provient d'un formulaire
+        if (req.headers['content-type'] === 'application/x-www-form-urlencoded' || req.headers['content-type'] === 'multipart/form-data') {
+            // Redirige vers la page de confirmation
+            res.redirect('/confirmation'); 
+        } else {
+            // Renvoie la réponse JSON pour les requêtes API
+            res.status(201).json(newCountry);
+        }
     } catch (error) {
         console.error("Error creating country:", error); // Affichez l'erreur si la création échoue
         res.status(500).json({ message: "Failed to create country" });

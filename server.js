@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors'); // Ajoutez cette ligne
 require('dotenv').config()
 const path = require('path')
 const errorHandler = require('./middleware/errorHandler')
@@ -6,8 +7,16 @@ const errorHandler = require('./middleware/errorHandler')
 const connectDb = require('./config/dbConnection')
 
 const app = express()
+
+app.use(cors());
+
 // built-in middellware forform data
-// app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false }));
+// Set EJS as the templating engine
+app.set('view engine', 'ejs');
+
+// Set the directory for your views
+app.set('views', path.join(__dirname, 'views'));
 
 // built-in middellware for json
 app.use(express.json())
@@ -24,6 +33,12 @@ app.use(errorHandler)
 app.get('/',(req,res)=>{
     res.render('index.ejs')
 })
+
+ 
+app.get('/confirmation', (req, res) => {
+    res.render('confirmation.ejs');
+});
+
 app.listen(PORT, ()=>{
     console.log(`Connected on port ${PORT}`)
 })
