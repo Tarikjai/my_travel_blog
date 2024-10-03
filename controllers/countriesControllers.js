@@ -132,7 +132,7 @@ const deleteCountry = asyncHandler(async(req,res)=>{
 //@acces public
 const getAllCountries = asyncHandler(async (req, res) => {
     const countries = await AllCountriesModel.find(); // Assurez-vous que vous utilisez le bon modèle
-    console.log(countries)
+    
     res.status(200).json(countries);
 });
 
