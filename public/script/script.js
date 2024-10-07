@@ -50,3 +50,12 @@ const navbarNav = document.getElementById('navbarNav');
 menuToggle.addEventListener('click', () => {
     navbarNav.classList.toggle('hidden');
 });
+
+
+
+document.querySelector('form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    console.log('Form data:', Object.fromEntries(formData));
+    this.submit();
+});

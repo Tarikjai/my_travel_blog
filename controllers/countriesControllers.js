@@ -25,9 +25,6 @@ const getCountry = asyncHandler(async(req,res)=>{
     res.status(200).json(countries)
 })
 
-//#desc  Create a country
-//@route POST /api/countries
-//@acces public
 const createCountry = asyncHandler(async(req,res)=>{
     console.log(`The request body is : ${JSON.stringify(req.body)}`)
     const { name, capital, description, image } = req.body
@@ -68,10 +65,18 @@ const createCountry = asyncHandler(async(req,res)=>{
     
 })
 
-//#desc Update a country 
-//@route PATCH /api/countries
-//@acces public
+
 const updateCountry = asyncHandler(async (req, res) => {
+
+    console.log('Update country called');
+    console.log('Request method:', req.method);
+    console.log('Request headers:', req.headers);
+    console.log('Request body:', req.body);
+    console.log('Request params:', req.params);
+
+
+
+
     const countryId = req.params.id;  
     const { name, capital, description, image } = req.body;
 
@@ -83,31 +88,47 @@ const updateCountry = asyncHandler(async (req, res) => {
 
     try {
         // Cherche le pays par ID
-        const country = await Country.findById(countryId); // Ajout de await ici
+        const country = await Country.findById(countryId);
         
-        // Vérifie si le pays existe et que le nom correspond
-        if (!country || country.name !== name) {
+        // Vérifie si le pays existe
+        if (!country) {
             return res.status(404).json({
-                message: `${name} n'a pas été trouvé dans la base de données ou le nom ne correspond pas.`
+                message: `Pays avec l'ID ${countryId} non trouvé dans la base de données.`
             });
         }
 
-        // Mettre à jour uniquement le capital et la description
+        // Mettre à jour tous les champs
+        country.name = name;
         country.capital = capital;
         country.description = description;
-        country.image = image
+        country.image = image;
+
         // Sauvegarder les modifications
         const updatedCountry = await country.save();
+        console.log('Article saved:', updatedCountry)
 
-        res.status(200).json({
-            message: `${name} a été mis à jour avec succès`,
-            data: updatedCountry
-        });
+        // Vérifier si la requête provient d'un formulaire HTML
+        if (req.headers['content-type'] === 'application/x-www-form-urlencoded') {
+            // Rediriger vers la page de confirmation
+            res.redirect('/confirmation');
+        } else {
+            // Renvoyer une réponse JSON pour les requêtes API
+            res.status(200).json({
+                message: 'Country updated successfully',
+                data: updatedCountry
+            });
+        }
     } catch (error) {
-        res.status(500).json({
-            message: 'Erreur lors de la mise à jour du pays',
-            error: error.message // Correction ici : remplace 'err' par 'error'
-        });
+        console.error("Erreur lors de la mise à jour du pays:", error);
+        if (req.headers['content-type'] === 'application/x-www-form-urlencoded') {
+            // Rediriger vers une page d'erreur ou le formulaire avec un message d'erreur
+            res.redirect(`/countries/${req.params.id}/edit?error=true`);
+        } else {
+            res.status(500).json({
+                message: 'Erreur lors de la mise à jour du pays',
+                error: error.message
+            });
+        }
     }
 });
 
@@ -138,5 +159,10 @@ const getAllCountries = asyncHandler(async (req, res) => {
 });
 
 
+
+
+// ... existing code ...
+
+ 
 module.exports = {getCountries, getCountry, createCountry, updateCountry, deleteCountry, getAllCountries}
 

@@ -1,20 +1,24 @@
 const express = require('express')
-const cors = require('cors'); // Ajoutez cette ligne
+const cors = require('cors'); 
 require('dotenv').config()
 const path = require('path')
 const errorHandler = require('./middleware/errorHandler')
 const methodOverride = require('method-override');
 const connectDb = require('./config/dbConnection')
-
-const AllCountriesModel = require('./models/AllCountriesModel'); // Ajout de l'importation
 const Country= require('./models/countryModel')
+
+
+const countriesRouter = require('./routes/countriesRouters');
+
 
 const app = express()
 
 app.use(cors());
 
 // built-in middellware forform data
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
+
+app.use(methodOverride('_method')); 
 // Set EJS as the templating engine
 app.set('view engine', 'ejs');
 
@@ -27,9 +31,9 @@ app.use(express.json())
 app.use(express.static(path.join(__dirname,'/public')))
 
 // method-override pour permettre de traiter le champ _method
-app.use(methodOverride('_method')); 
 
 
+app.use('/api/countries', countriesRouter);
 
 const PORT = process.env.PORT || 3000
 
@@ -53,28 +57,24 @@ app.get('/confirmation', (req, res) => {
     res.render('confirmation.ejs');
 });
 app.get('/form', (req, res) => {
-    res.render('form.ejs');
+  const country = new Country()
+    res.render('form.ejs', { country });
 });
 app.get('/contact', (req, res) => {
   res.render('contact.ejs');
 });
 app.get('/edit/:id', async(req, res) => {
-  const country = await Country.find()
+  const country = await Country.findById(req.params.id)
   res.render('edit.ejs', { country });
 });
 
+app.get('/country/:id', async(req, res) => {
+  const country = await Country.findById(req.params.id)
+  res.render('edit.ejs', { country });
+});
 
 //fetch allcountries depuis mongodd pour les afficher dans la liste déroulante 
 
-app.get('/api/countriesList/all', async (req, res) => {
-    try {
-      const countries = await AllCountriesModel.find();
-      res.json(countries);
-    } catch (error) {
-        console.log(countries)
-      res.status(500).json({ error: 'Error fetching countries' });
-    }
-  });
 
 app.listen(PORT, ()=>{
     console.log(`Connected on port ${PORT}`)
