@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
     margin: 0;
     padding: 0;
@@ -10,9 +14,9 @@ body {
     background: linear-gradient(135deg, #E78F81, #FFF5CD);
     font-family: "Poppins", sans-serif;
 }
-.desktop-nav.navbar.navbar-expand-lg.navbar-light.bg-light{
-    padding: 0px;
 
+.desktop-nav.navbar.navbar-expand-lg.navbar-light.bg-light {
+    padding: 0px;
 }
 
 .desktop-nav {
@@ -22,9 +26,10 @@ body {
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
     background-color: #A6F0FD;
 }
-.container-fluid, .desktop-nav{
+
+.container-fluid, .desktop-nav {
     background-color: #A6F0FD;
-    padding: 0px ,0px, 0px ,0x
+    padding: 0px 0px 0px 0px; /* Corrigé */
 }
 
 .nav-links {
@@ -54,6 +59,7 @@ li a {
     border-radius: 5px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
 }
+
 .confirmation {
     display: flex;
     flex-direction: column;
@@ -61,7 +67,6 @@ li a {
     justify-content: center; /* Centre verticalement */
     height: 50vh; /* Prend toute la hauteur de la fenêtre */
     text-align: center; /* Centre le texte */
-    
 }
 
 .container .title {
@@ -141,9 +146,8 @@ form .button input:hover {
     background: linear-gradient(-135deg, #71b7e6, #9b59b6);
 }
 
-
 .card-container {
-    margin:30px auto;
+    margin: 30px auto;
     max-width: 1000px;
     width: 100%;
     background-color: #fff;
@@ -152,41 +156,38 @@ form .button input:hover {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
 }
 
-
-
 .card {
     display: flex;
     flex-direction: column;
     height: 100%; /* Assure que la carte remplit toute la hauteur de la colonne */
-  }
-  
-  .card-body {
+}
+
+.card-body {
     flex: 1; /* Permet à la card-body de grandir pour remplir l'espace disponible */
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* Espace entre le texte et le bouton */
-  }
-  
-  .card-title {
+}
+
+.card-title {
     font-size: 1.25rem;
     font-weight: bold;
-  }
-  
-  .card-subtitle {
+}
+
+.card-subtitle {
     font-size: 1rem;
     margin-bottom: 0.5rem;
-  }
-  
-  .card-text {
+}
+
+.card-text {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3; /* Limite le texte à 3 lignes */
     overflow: hidden;
     text-overflow: ellipsis;
     flex-grow: 1; /* Permet à la description de remplir l'espace restant */
-  }
-  
-  .btn {
+}
+
+.btn {
     margin-top: auto; /* Pousse le bouton vers le bas */
-  }
-  
+}

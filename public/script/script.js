@@ -43,3 +43,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+
+const menuToggle = document.getElementById('menu-toggle');
+const navbarNav = document.getElementById('navbarNav');
+
+menuToggle.addEventListener('click', () => {
+    navbarNav.classList.toggle('hidden');
+});

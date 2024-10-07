@@ -4,12 +4,14 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon server",
-    "start": "node server"
+    "start": "node server",
+    "build": "tailwindcss -i ./public/css/style.css -o ./public/css/output.css --watch"
   },
   "author": "Tarik",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "autoprefixer": "^10.4.20",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
@@ -17,6 +19,8 @@
     "express-async-handler": "^1.2.0",
     "method-override": "^3.0.0",
     "mongoose": "^8.7.0",
-    "nodemon": "^3.1.7"
+    "nodemon": "^3.1.7",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13"
   }
 }

@@ -1,53 +1,47 @@
 <%- include('./layouts/header.ejs') %>
-<section class="section-container">
-     
-    <div class="container">
+
+<section class="section-container py-10 flex-grow">
+    <div class="container mx-auto px-4">
         <!-- Title section -->
-        <div class="title">Enter the information</div>
+        <div class="title text-2xl font-bold mb-6">Enter the information</div>
         <div class="content">
-          <!-- Registration form -->
-          <form action="/api/countries" method="post">
-            <div class="user-details">
-              <!-- Input for Full Name -->
-              <!-- <div class="input-box">
-                <span class="details">Country Name</span>
-                <input type="text" placeholder="Enter the country name" required name="name">
-              </div> -->
-              <div class="input-box">
-                <span class="details">Country Name</span>
-                <select id="country-select" required name="name">
-                    <option value="" disabled selected>Select a country</option>
-                </select>
-            </div>
-              <!-- Input for Username -->
-              <div class="input-box">
-                <span class="details">Capital</span>
-                <input type="text" placeholder="Enter the Capital name" required name="capital">
-              </div>
-              <!-- Input for Email -->
-              <div class="input-box">
-                <span class="details">Description</span>
-                 
-                <textarea placeholder="Enter your description" required rows="4" style="width: 100%; height: 100px;" name="description"></textarea>
-              </div>
-            <!-- Input for PhotoLink -->
-              <div class="input-box">
-                <span class="details">Photo</span>
-                <input type="text" placeholder="Enter the photo link" required name="image">
-              </div>
-           
-      
-            <!-- Submit button -->
-            <div class="button">
-              <input type="submit" value="Submit">
-            </div>
-          </form>
+            <!-- Registration form -->
+            <form action="/api/countries" method="post" class="bg-white shadow-md rounded-lg p-6">
+                <div class="user-details">
+                    <!-- Input for Country Name -->
+                    <div class="input-box mb-4">
+                        <span class="details text-sm font-semibold">Country Name</span>
+                        <select id="country-select" required name="name" class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="" disabled selected>Select a country</option>
+                        </select>
+                    </div>
+                    <!-- Input for Capital -->
+                    <div class="input-box mb-4">
+                        <span class="details text-sm font-semibold">Capital</span>
+                        <input type="text" placeholder="Enter the Capital name" required name="capital" class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <!-- Input for Description -->
+                    <div class="input-box mb-4">
+                        <span class="details text-sm font-semibold">Description</span>
+                        <textarea placeholder="Enter your description" required rows="4" class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" name="description"></textarea>
+                    </div>
+                    <!-- Input for Photo Link -->
+                    <div class="input-box mb-4">
+                        <span class="details text-sm font-semibold">Photo</span>
+                        <input type="text" placeholder="Enter the photo link" required name="image" class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                </div>
+                <!-- Submit button -->
+                <div class="button">
+                    <input type="submit" value="Submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 cursor-pointer">
+                </div>
+            </form>
         </div>
-      </div>
-    
-    
-</section> 
-<script src="/script/script.js"></script>
-</body>
+    </div>
+</section>
+
 <%- include('./layouts/footer.ejs') %>
+<script src="/script/script.js"></script>
+
+</body>
 </html>
