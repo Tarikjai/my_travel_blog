@@ -10,6 +10,10 @@ body {
     background: linear-gradient(135deg, #E78F81, #FFF5CD);
     font-family: "Poppins", sans-serif;
 }
+.desktop-nav.navbar.navbar-expand-lg.navbar-light.bg-light{
+    padding: 0px;
+
+}
 
 .desktop-nav {
     display: flex;
@@ -17,6 +21,10 @@ body {
     align-items: center;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
     background-color: #A6F0FD;
+}
+.container-fluid, .desktop-nav{
+    background-color: #A6F0FD;
+    padding: 0px ,0px, 0px ,0x
 }
 
 .nav-links {

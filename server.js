@@ -3,7 +3,7 @@ const cors = require('cors'); // Ajoutez cette ligne
 require('dotenv').config()
 const path = require('path')
 const errorHandler = require('./middleware/errorHandler')
- 
+const methodOverride = require('method-override');
 const connectDb = require('./config/dbConnection')
 
 const AllCountriesModel = require('./models/AllCountriesModel'); // Ajout de l'importation
@@ -25,7 +25,16 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.json())
 // Server static files 
 app.use(express.static(path.join(__dirname,'/public')))
+
+// method-override pour permettre de traiter le champ _method
+app.use(methodOverride('_method')); 
+
+
+
 const PORT = process.env.PORT || 3000
+
+
+
 
 connectDb()
 
@@ -45,6 +54,13 @@ app.get('/confirmation', (req, res) => {
 });
 app.get('/form', (req, res) => {
     res.render('form.ejs');
+});
+app.get('/contact', (req, res) => {
+  res.render('contact.ejs');
+});
+app.get('/edit/:id', async(req, res) => {
+  const country = await Country.find()
+  res.render('edit.ejs', { country });
 });
 
 

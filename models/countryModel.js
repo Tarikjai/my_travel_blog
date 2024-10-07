@@ -16,6 +16,10 @@ const countrySchema = mongoose.Schema(
                 type: String,
                 required : [true , "Please add a description" ]
             },
+            image:{
+                type:String,
+                required : [true , "Please add an image" ],
+            }
         },
         {
             timestamps: true

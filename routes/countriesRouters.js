@@ -5,6 +5,9 @@ const {getCountries, getCountry, createCountry, updateCountry, deleteCountry, ge
 router.route('/').get(getCountries).post(createCountry)
 router.route('/:id').get(getCountry).patch(updateCountry).delete(deleteCountry)
 
+// Route pour obtenir les détails d'un pays spécifique et afficher le formulaire d'édition
+router.route('/:id/edit').get(getCountry); // Utilisation correcte de route()
+
 router.route('/all').get(getAllCountries); // Une nouvelle route pour récupérer tous les pays
 
 

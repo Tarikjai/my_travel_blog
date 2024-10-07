@@ -30,7 +30,7 @@ const getCountry = asyncHandler(async(req,res)=>{
 //@acces public
 const createCountry = asyncHandler(async(req,res)=>{
     console.log(`The request body is : ${JSON.stringify(req.body)}`)
-    const { name, capital, description  } = req.body
+    const { name, capital, description, image } = req.body
 
    /* name = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();*/
     // Vérifie si le pays existe deja 
@@ -42,7 +42,7 @@ const createCountry = asyncHandler(async(req,res)=>{
     }
 
     // Vérifie qu'aucun champ n'est null ou vide  
-    if (!name || !capital || !description) {
+    if (!name || !capital || !description || !image) {
         res.status(400)
         throw new Error('All fields are mandatory ! ');
     }
@@ -50,7 +50,8 @@ const createCountry = asyncHandler(async(req,res)=>{
         const newCountry  = await Country.create({
             name,
             capital,
-            description
+            description,
+            image
         });
            // Vérifie si la requête provient d'un formulaire
         if (req.headers['content-type'] === 'application/x-www-form-urlencoded' || req.headers['content-type'] === 'multipart/form-data') {
@@ -72,10 +73,10 @@ const createCountry = asyncHandler(async(req,res)=>{
 //@acces public
 const updateCountry = asyncHandler(async (req, res) => {
     const countryId = req.params.id;  
-    const { name, capital, description } = req.body;
+    const { name, capital, description, image } = req.body;
 
     // Vérification que tous les champs requis sont présents
-    if (!name || !capital || !description) {
+    if (!name || !capital || !description || !image) {
         res.status(400);
         throw new Error('All fields are mandatory!');
     }
@@ -94,7 +95,7 @@ const updateCountry = asyncHandler(async (req, res) => {
         // Mettre à jour uniquement le capital et la description
         country.capital = capital;
         country.description = description;
-
+        country.image = image
         // Sauvegarder les modifications
         const updatedCountry = await country.save();
 
