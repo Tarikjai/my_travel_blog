@@ -6,7 +6,8 @@ const countrySchema = mongoose.Schema(
             name: {
                 type: String,
                 required : [true , "Please add the country name" ],
-                immutable: true
+                immutable: true,
+                unique: true
             },
             capital:{
                 type: String,

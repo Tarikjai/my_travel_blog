@@ -1,58 +1,21 @@
 <%- include('./layouts/header.ejs') %>
 
 <body class="flex flex-col min-h-screen">
-    <section class="flex-grow">
-        <div class="container mx-auto mt-10 px-4">
-            <h2 class="text-2xl font-bold mb-6">Edit Country: <%= country.name %></h2>
-            <form action="/api/countries/<%= country._id %>" method="POST" class="bg-white shadow-md rounded-lg p-6">
-                <!-- Méthode POST pour la mise à jour, en utilisant method-override pour PATCH -->
-                <input type="hidden" name="_method" value="PATCH"> <!-- Champ caché pour PATCH -->
+<section class="section-container py-10 flex-grow">
 
-                <div class="mb-4">
-                    <label for="name" class="block text-sm font-semibold mb-1">Name</label>
-                    <input type="text" 
-                           class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" 
-                           id="name" 
-                           name="name" 
-                           value="<%= country.name %>" 
-                           required>
-                </div>
 
-                <div class="mb-4">
-                    <label for="capital" class="block text-sm font-semibold mb-1">Capital</label>
-                    <input type="text" 
-                           class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" 
-                           id="capital" 
-                           name="capital" 
-                           value="<%= country.capital %>" 
-                           required>
-                </div>
+    <div class="container mx-auto mt-10 px-4">
+        <h2 class="text-2xl font-bold mb-6">Edit Country: <%= country.name %></h2>
+        <form action="/api/countries/<%= country._id %>" method="POST" class="bg-white shadow-md rounded-lg p-6">
+            <!-- Méthode POST pour la mise à jour, en utilisant method-override pour PATCH -->
+            <input type="hidden" name="_method" value="PATCH"> <!-- Champ caché pour PATCH -->
 
-                <div class="mb-4">
-                    <label for="description" class="block text-sm font-semibold mb-1">Description</label>
-                    <textarea class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" 
-                              id="description" 
-                              name="description" 
-                              rows="3" 
-                              required><%= country.description %></textarea>
-                </div>
+            <%- include('layouts/_form_fields') %>
+        </form>
+    </div>
 
-                <div class="mb-4">
-                    <label for="image" class="block text-sm font-semibold mb-1">Image URL</label>
-                    <input type="url" 
-                           class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" 
-                           id="image" 
-                           name="image" 
-                           value="<%= country.image %>" 
-                           required>
-                </div>
 
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Update Country</button>
-                <a href="/" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400">Cancel</a> <!-- Lien pour annuler et revenir à la page d'accueil -->
-            </form>
-        </div>
-    </section>
-    
+</section>
     <%- include('./layouts/footer.ejs') %>
     <script src="/script/script.js"></script>
 </body>

@@ -1,26 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirmation</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <nav class="desktop-nav">
-        <div class="logo"><img src="../img/travel.jpg" alt="travel" width="70" height="70"></div>
-        <div>
-            <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/form">Form</a></li>
-                <li><a href="#Contact">Contact</a></li>
-            </ul>
-        </div>  
-    </nav>
-    <div class=" confirmation">
-        <h1>Information Saved Successfully!</h1>
-        <p>Your country has been added to the database.</p>
-        <a href="/">Go back to the form</a>
+<%- include('./layouts/header.ejs') %>
+
+<section class="section-container py-10 flex-grow">
+    <div class="container mx-auto px-4">
+        <div class="rounded-lg w-[600px] h-32 bg-[#0037b6] text-[#ffffff]">
+            <div class="flex flex-row w-full gap-10 justify-center items-center px-5 h-full">
+                <div class="my-auto text-2xl">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <path d="m9 11 3 3L22 4"></path>
+                    </svg>
+                </div>
+                <div>
+                    <div class="font-bold text-2xl">Country added</div>
+                    <div class="text-lg"><a href="/">Go back to the form</a></div>
+                </div>
+            </div>
+        </div>
     </div>
+    
+</section>
+    <%- include('./layouts/footer.ejs') %>
 </body>
+
 </html>
+

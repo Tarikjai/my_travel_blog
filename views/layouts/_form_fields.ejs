@@ -1,0 +1,28 @@
+ <div class="user-details">
+    <!-- Input for Country Name -->
+    <div class="input-box mb-4">
+        <span class="details text-sm font-semibold">Country Name</span>
+        <select id="country-select" required name="name" class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="" disabled selected>Select a country</option>
+        </select>
+    </div>
+    <!-- Input for Capital -->
+    <div class="input-box mb-4">
+        <span class="details text-sm font-semibold">Capital</span>
+        <input type="text" placeholder="Enter the Capital name" required name="capital" class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+    </div>
+    <!-- Input for Description -->
+    <div class="input-box mb-4">
+        <span class="details text-sm font-semibold">Description</span>
+        <textarea placeholder="Enter your description" required rows="4" class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" name="description"></textarea>
+    </div>
+    <!-- Input for Photo Link -->
+    <div class="input-box mb-4">
+        <span class="details text-sm font-semibold">Photo</span>
+        <input type="text" placeholder="Enter the photo link" required name="image" class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+    </div>
+</div>
+<!-- Submit button -->
+<div class="button">
+    <input type="submit" value="Submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 cursor-pointer">
+</div>
