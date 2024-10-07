@@ -49,13 +49,10 @@ app.use(errorHandler)
 //Pages
 app.get('/', async(req,res)=>{
   //renvoie des informations sur le pays dans ma cards en index
-  const countries = await Country.find()
+  const countries = await Country.find().sort({createdAt :"desc"})
   res.render('index.ejs', { countries })
 })
 
-app.get('/confirmation', (req, res) => {
-    res.render('confirmation.ejs');
-});
 app.get('/form', (req, res) => {
   const country = new Country()
     res.render('form.ejs', { country });
@@ -70,7 +67,7 @@ app.get('/edit/:id', async(req, res) => {
 
 app.get('/country/:id', async(req, res) => {
   const country = await Country.findById(req.params.id)
-  res.render('edit.ejs', { country });
+  res.render('country.ejs', { country });
 });
 
 //fetch allcountries depuis mongodd pour les afficher dans la liste déroulante 
@@ -80,5 +77,5 @@ app.listen(PORT, ()=>{
     console.log(`Connected on port ${PORT}`)
 })
 
-// rr
+
  

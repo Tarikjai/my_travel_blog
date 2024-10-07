@@ -14,7 +14,11 @@
                             <h6 class="card-subtitle mb-2 text-gray-500">Capitale : <%= country.capital %></h6>
                             <p class="card-text text-gray-700"><%= country.description %></p>
                             <div class="flex justify-between mt-4">
-                                <a href="/country/<%= country.id %>" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">En savoir plus</a>
+                                <a href="/country/<%= country.id %>" class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-700 ">En savoir plus</a>
+
+                                <form action="/api/countries/<%= country.id%>?_method=DELETE" method="POST" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600" >
+                                    <button type="submit">Delete</button>
+                                </form>
                                 <a href="/edit/<%= country.id %>" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">Edit</a> <!-- Bouton Edit ajouté ici -->
                             </div>
                         </div>

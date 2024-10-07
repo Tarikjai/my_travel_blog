@@ -3,17 +3,14 @@ const asyncHandler = require("express-async-handler")
 const Country = require('../models/countryModel')
 const AllCountriesModel = require('../models/AllCountriesModel'); // Ajout de l'importation
 
-//#desc Get All Countries 
+
 //@route GET /api/countries
-//@acces public
 const getCountries = asyncHandler(async(req,res)=>{
     const countries = await Country.find()
     res.status(200).json(countries)
 })
 
 //#desc Get a Country
-//@route GET /api/countries
-//@acces public
 const getCountry = asyncHandler(async(req,res)=>{
     const id = req.params.id
     const countries = await Country.findById(id)
@@ -53,7 +50,7 @@ const createCountry = asyncHandler(async(req,res)=>{
            // Vérifie si la requête provient d'un formulaire
         if (req.headers['content-type'] === 'application/x-www-form-urlencoded' || req.headers['content-type'] === 'multipart/form-data') {
             // Redirige vers la page de confirmation
-            res.redirect('/confirmation'); 
+            res.redirect(`/country/${newCountry._id}`);
         } else {
             // Renvoie la réponse JSON pour les requêtes API
             res.status(201).json(newCountry);
@@ -68,13 +65,7 @@ const createCountry = asyncHandler(async(req,res)=>{
 
 const updateCountry = asyncHandler(async (req, res) => {
 
-    console.log('Update country called');
-    console.log('Request method:', req.method);
-    console.log('Request headers:', req.headers);
-    console.log('Request body:', req.body);
-    console.log('Request params:', req.params);
-
-
+   
 
 
     const countryId = req.params.id;  
@@ -110,7 +101,7 @@ const updateCountry = asyncHandler(async (req, res) => {
         // Vérifier si la requête provient d'un formulaire HTML
         if (req.headers['content-type'] === 'application/x-www-form-urlencoded') {
             // Rediriger vers la page de confirmation
-            res.redirect('/confirmation');
+            res.redirect(`/country/${countryId}`);
         } else {
             // Renvoyer une réponse JSON pour les requêtes API
             res.status(200).json({

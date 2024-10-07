@@ -1,0 +1,33 @@
+<%- include('./layouts/header.ejs') %>
+
+<section class="section-container py-10 flex-grow">
+    <div class="container mx-auto px-4">
+        <div class="flex mx-auto justify-center items-center">
+            <div class="grid grid-cols-1 xl:grid-cols-1 gap-5 m-8">
+                <div class="flex flex-col rounded-2xl w-full xl:w-96 bg-[#ffffff] text-[#374151] shadow-xl">
+                    <figure class="flex justify-center items-center">
+                        <img src="<%= country.image %>">
+                    </figure>
+                    <div class="flex flex-col p-8 h-full">
+                        <div class="text-3xl  font-bold pb-6"><%= country.name %></div>
+                        <div class="  text-lg pb-12"><%= country.description %>.</div>
+                        <div class="flex flex-col gap-3  text-base">
+                            <div class="flex flex-row gap-3">
+                                
+                               
+                        <div class="flex flex-grow"></div>
+                        <div class="flex pt-10">
+                            <button class="font-bold rounded-lg text-xl  w-24 h-8 bg-[#374151] text-[#ffffff] justify-center"><a href="/">Return </a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</section>
+    <%- include('./layouts/footer.ejs') %>
+</body>
+
+</html>
+
