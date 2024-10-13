@@ -8,7 +8,7 @@ const connectDb = require('./config/dbConnection')
 const Country= require('./models/countryModel')
 
 
-const countriesRouter = require('./routes/countriesRouters');
+const countriesRouter = require('./routes/countriesRoutes');
 
 
 const app = express()
@@ -37,12 +37,10 @@ app.use('/api/countries', countriesRouter);
 
 const PORT = process.env.PORT || 3000
 
-
-
-
 connectDb()
 
-app.use('/api/countries', require('./routes/countriesRouters'))
+app.use('/api/countries', require('./routes/countriesRoutes'))
+app.use('/api/users',require('./routes/usersRoutes'))
 app.use(errorHandler)
 
 

@@ -6,7 +6,7 @@ const AllCountriesModel = require('../models/AllCountriesModel'); // Ajout de l'
 
 //@route GET /api/countries
 const getCountries = asyncHandler(async(req,res)=>{
-    const countries = await Country.find()
+    const countries = await Country.find({user_id: req.user.id})
     res.status(200).json(countries)
 })
 
@@ -40,13 +40,17 @@ const createCountry = asyncHandler(async(req,res)=>{
         res.status(400)
         throw new Error('All fields are mandatory ! ');
     }
+   
+    // Créer un nouveau pays
     try {
         const newCountry  = await Country.create({
             name,
             capital,
             description,
-            image
+            image,
+            user_id: req.user.id
         });
+        console.log(newCountry)
            // Vérifie si la requête provient d'un formulaire
         if (req.headers['content-type'] === 'application/x-www-form-urlencoded' || req.headers['content-type'] === 'multipart/form-data') {
             // Redirige vers la page de confirmation

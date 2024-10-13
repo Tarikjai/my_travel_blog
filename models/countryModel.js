@@ -2,7 +2,11 @@ const mongoose =require('mongoose')
 
 const countrySchema = mongoose.Schema(
         {
-
+            user_id:{
+                type : mongoose.Schema.Types.ObjectId,
+                required:true,
+                ref:"User" // reference of the model
+            },
             name: {
                 type: String,
                 required : [true , "Please add the country name" ],
