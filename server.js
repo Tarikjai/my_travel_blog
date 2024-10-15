@@ -62,6 +62,14 @@ app.get('/edit/:id', async(req, res) => {
   const country = await Country.findById(req.params.id)
   res.render('edit.ejs', { country });
 });
+app.get('/login', async(req, res) => {
+ // const country = await Country.findById(req.params.id)
+  res.render('login.ejs');
+});
+app.get('/register', async(req, res) => {
+  // const country = await Country.findById(req.params.id)
+   res.render('register.ejs');
+ });
 
 app.get('/country/:id', async(req, res) => {
   const country = await Country.findById(req.params.id)

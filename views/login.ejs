@@ -1,0 +1,25 @@
+<%- include('./layouts/header.ejs') %>
+
+
+<section  class="container" id="blog">
+    <div class="wrapper">
+        <h1 class="sign-up">Login</h1>
+            <form action="/api/users/login" method="post" >
+                <input type="text" placeholder="Email" name="email" id="">
+                <input type="text" placeholder="Password" name="password" id="">
+                <div class="recover">
+                    <a href="#">Forgot password?</a>
+                </div>
+             
+            <button type="submit">Login</button>
+        </form>
+            <div class="member">
+                Not a member? <a href="/register">Register now</a>
+            </div>
+
+    </div>
+</section>
+ 
+ 
+<%- include('./layouts/footer.ejs') %>
+ 

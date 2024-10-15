@@ -1,5 +1,40 @@
 <%- include('./layouts/header.ejs') %>
 
+
+<section id="blog">
+    <div class="blog-heading">
+        <!--Heading-->
+        <span>My Recent Post</span>
+        <h3>My Blog</h3>
+    </div>
+    <!--blog-container-->
+    <div class="blog-container">
+        <% countries.forEach(function(country) { %>
+        <!-- Box 1-->
+        <div class="blog-box">
+            <!-- img -->
+            <div class="blog-img">
+                <img src="<%= country.image %>" alt="blog">
+            </div>
+
+            <!-- text -->
+             <div class="blog-text">
+                <span><%= country.createdAt.toLocaleDateString(); %></span>
+                <a href="#" class="blog-title"><%= country.name %></a>
+                <p><%= country.description %></p>
+                <a href="/country/<%= country.id %>">Read More</a>
+            </div>
+        </div>
+        <% }); %>
+       
+    </div>
+</section>
+
+<%- include('./layouts/footer.ejs') %>
+
+
+
+<!--
 <body class="flex flex-col min-h-screen">
 
     <section class="flex-grow">
@@ -19,7 +54,7 @@
                                 <form action="/api/countries/<%= country.id%>?_method=DELETE" method="POST" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600" >
                                     <button type="submit">Delete</button>
                                 </form>
-                                <a href="/edit/<%= country.id %>" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">Edit</a> <!-- Bouton Edit ajouté ici -->
+                                <a href="/edit/<%= country.id %>" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">Edit</a> -- Bouton Edit ajouté ici 
                             </div>
                         </div>
                     </div>
@@ -27,7 +62,9 @@
             </div>
         </div>
 </section>
-<%- include('./layouts/footer.ejs') %>
+
 <script src="/script/script.js"></script>
 </body>
+
 </html>
+-->
