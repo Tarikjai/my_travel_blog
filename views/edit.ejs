@@ -1,14 +1,12 @@
 <%- include('./layouts/header.ejs') %>
 
-<body class="flex flex-col min-h-screen">
-<section class="section-container py-10 flex-grow">
-    <div class="container mx-auto mt-10 px-4">
-        <h2 class="text-2xl font-bold mb-6">Edit Country: <%= country.name %></h2>
-
+<section  class="container" id="blog">
+    <div class="wrapper">
+        <h1 class="Edit-country">Edit country</h1>
         <form action="/api/countries/<%= country.id %>?_method=PUT" method="POST" class="bg-white shadow-md rounded-lg p-6">
             <%- include('layouts/_form_fields') %>
             
-            <!-- Submit button -->
+           
             
         </form>
     </div>
@@ -16,9 +14,4 @@
 
 <%- include('./layouts/footer.ejs') %>
 
-<script>
-
-</script>
-
-</body>
-</html>
+ 
