@@ -1,5 +1,4 @@
 const asyncHandler = require("express-async-handler")
-
 const Country = require('../models/countryModel')
 const AllCountriesModel = require('../models/AllCountriesModel'); // Ajout de l'importation
 
