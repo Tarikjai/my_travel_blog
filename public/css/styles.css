@@ -18,6 +18,11 @@
     padding: 0px;
     font-family: poppins   ;
     background: linear-gradient(135deg, #E78F81, #FFF5CD);
+
+    height: 100%; /* Make the page take the full height */
+    margin: 0; /* Remove default margins */
+    display: flex;
+    flex-direction: column;
  }
 /*-------Navbar-------------*/
  
@@ -76,7 +81,7 @@
     flex-direction: column;
     padding: 40px;
     border-bottom:  1px solid rgba(0, 0, 0, 0.05);
-    
+     flex: 1; /* This ensures the content takes up the available space */
 }
 
 .blog-heading {
@@ -103,7 +108,8 @@
     align-items: center;
     margin:20px 0px;
     flex-wrap:wrap;
-    flex: 1
+    flex: 1;
+ 
    
 } 
 
@@ -386,3 +392,29 @@ input:focus {
     text-decoration: none;
     color : #464647
  }
+
+/*--->From-*/
+.form-wrapper {
+    background-color: #ffffff;
+    width: 1000px;
+    padding: 2rem 1rem;
+    margin :50px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    text-align:center;
+    box-shadow:0 20px 35px rgba(0, 0, 0, 0.1);
+    
+    
+}
+
+form textarea {
+    width:92%;
+    
+    outline: none;
+    border: 1px solid #fff;
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    background: #e4e4e4;
+
+}

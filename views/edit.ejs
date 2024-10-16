@@ -1,7 +1,7 @@
 <%- include('./layouts/header.ejs') %>
 
 <section  class="container" id="blog">
-    <div class="wrapper">
+    <div class="form-wrapper">
         <h1 class="Edit-country">Edit country</h1>
         <form action="/api/countries/<%= country.id %>?_method=PUT" method="POST" class="bg-white shadow-md rounded-lg p-6">
             <%- include('layouts/_form_fields') %>

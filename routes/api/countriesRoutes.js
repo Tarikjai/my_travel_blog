@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
-const {getCountries, getCountry, createCountry, updateCountry, deleteCountry, getAllCountries } =require('../controllers/countriesControllers')
-const validationToken = require('../middleware/validateTokenHandlers')
+const {getCountries, getCountry, createCountry, updateCountry, deleteCountry, getAllCountries } =require('../../controllers/countriesControllers')
+const validationToken = require('../../middleware/validateTokenHandlers')
 
 const methodOverride = require('method-override');
 router.use(methodOverride('_method'));
