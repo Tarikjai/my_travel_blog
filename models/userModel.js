@@ -15,6 +15,13 @@ const userSchema = mongoose.Schema({
                 type:String,
                 required : [true , "Please add the user password"]
             },
+            isMfaActive:{
+                type: Boolean,
+                required:false,
+            },
+            twoFactorSecret :{
+                type:String
+            },
         },
         { 
             timestamps: true 

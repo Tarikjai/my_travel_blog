@@ -9,7 +9,13 @@ router.get('/', async (req, res) => {
 
 router.get('/form', (req, res) => {
   const country = new Country();
-  res.render('form.ejs', { country });
+  console.log(req.user)
+  if(req.isAuthenticated()){
+    res.render('form.ejs', { country });
+  }else {
+    res.redirect("/login")
+  }
+  //res.render('form.ejs', { country });
 });
 
 router.get('/contact', (req, res) => {
