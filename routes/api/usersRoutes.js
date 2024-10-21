@@ -9,13 +9,24 @@ router.post('/register', registerUser)
 router.post('/login',passport.authenticate('local'), loginUser)
 */
 
-router.post('/login', 
-    passport.authenticate('local', { 
-      successRedirect: '/form', 
-      failureRedirect: '/login', // Optional: redirect back to login if authentication fails
-      failureFlash: true // Optional: enable flash messages on failure
-    })
-  );
+router.post('/login', (req, res, next) => {
+  const acceptHeader = req.headers['accept'];
+
+  // Si la requête vient d'un navigateur (interface web), utiliser Passport
+  if (acceptHeader && acceptHeader.includes('text/html')) {
+    passport.authenticate('local', {
+      successRedirect: '/form',
+      failureRedirect: '/login',
+      failureFlash: true
+    })(req, res, next);
+  } else {
+    // Si la requête vient d'une source externe (comme API), utiliser loginUser
+    loginUser(req, res, next);
+  }
+});
+
+
+
 router.post('/logout', logout)
 
 router.get('/current', validationToken,currentUser)
