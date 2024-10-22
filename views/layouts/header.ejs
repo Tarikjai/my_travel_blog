@@ -26,35 +26,26 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/form">Form</a></li>
                 <li><a href="/Contact">Contact</a></li>
-                <li><a href="/login">Login</a></li>
+                <li><a href="/login" class="text-blue-500 hover:underline">Login</a></li>
+            </ul>
+            <div class="logout">
+                <form action="/api/users/logout" method="post" class="logout-from">
+                    <button type="submit" class="text-blue-500 underline hover:text-blue-700">Logout</button>
+                </form>
+            </div>       
+             
+        </nav>
+    </header>
+ <!-- 
+ <li><a href="/login">Login</a></li>
             </ul>
             <div> 
                 <form action="/api/users/logout" method="post" style="display:inline;">
                     <button type="submit" style="background:none; border:none; color:blue; text-decoration:underline; cursor:pointer;">Logout</button>
                 </form>
             </div>
-        </nav>
-    </header>
- <!-- 
-<nav class="desktop-nav flex items-center justify-between bg-[#A6F0FD] shadow-md p-4">
-    <a href="/" class="logo">
-        <img src="../img/travel.jpg" alt="Travel logo" width="70" height="70">
-    </a>
-    <div class="block lg:hidden">
-        <button class="text-gray-500 focus:outline-none" id="menu-toggle">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-            </svg>
-        </button>
-    </div>
-    <div class="hidden lg:flex lg:items-center lg:space-x-4" id="navbarNav">
-        <ul class="nav-links flex space-x-4">
-            <li><a class="text-lg text-gray-700 hover:text-gray-900" href="/">Home</a></li>
-            <li><a class="text-lg text-gray-700 hover:text-gray-900" href="/form">Form</a></li>
-            <li><a class="text-lg text-gray-700 hover:text-gray-900" href="/Contact">Contact</a></li>
-            <li><a class="text-lg text-gray-700 hover:text-gray-900" href="/login">Login</a></li>
-        </ul>
-    </div>
-</nav>-->
+            
+            >-->
 
 <!-- Ajout du script pour le menu mobile -->
+ <!-- Affichage conditionnel basé sur la connexion -->

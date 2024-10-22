@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const Country = require('../../models/countryModel');
-
+ 
 router.get('/', async (req, res) => {
   const countries = await Country.find().sort({createdAt: "desc"});
   res.render('index.ejs', { countries });
-});
+}); 
+ 
 
 router.get('/form', (req, res) => {
   const country = new Country();

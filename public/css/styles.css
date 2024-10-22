@@ -62,6 +62,12 @@
     color: #f33c3c;
 }
 
+
+
+.logout-from {
+   
+}
+
 /* Mobile responsive navbar */
 @media (max-width: 768px) {
     .navbar {
